@@ -31,6 +31,13 @@ const changeModal = (project: number) => {
   return buffer;
 };
 
+const ProjectCard = styled(Card)`
+  width: 100%;
+  max-width: 1024px;
+  display: inline-block;
+  text-align: left;
+`;
+
 const Projects = () => {
   const [projectModal, setProjectModal] = React.useState<boolean[]>(
     initModal()
@@ -39,12 +46,16 @@ const Projects = () => {
   return (
     <Wrapper>
       <Title>PROJECTS</Title>
-      <Row itemType="flex" align="middle" gutter={[8, 8]}>
+      <Row
+        itemType="flex"
+        align="middle"
+        style={{ textAlign: "center" }}
+        gutter={[8, 8]}
+      >
         <Col xs={24} xl={12}>
-          <Card
+          <ProjectCard
             title="PiCLFS"
             extra={<a onClick={() => setProjectModal(changeModal(4))}>읽기</a>}
-            style={{ width: "100%" }}
           >
             <p>
               Raspberry Pi에서 작동하는 Cross Linux From Scratch (CLFS)를
@@ -53,52 +64,48 @@ const Projects = () => {
               이것을 사용하여 사용자가 원하는 리눅스 플랫폼을 빌드할 수
               있습니다.
             </p>
-          </Card>
+          </ProjectCard>
         </Col>
         <Col xs={24} xl={12}>
-          <Card
+          <ProjectCard
             title="Android Debloater"
             extra={<a onClick={() => setProjectModal(changeModal(5))}>읽기</a>}
-            style={{ width: "100%" }}
           >
             <p>
               안드로이드 스마트폰에 있는 원치 않는 애플리케이션과 기본 탑재
               애플리케이션을 루팅없이 제거하는 프로그램 입니다. Windows, Linux,
               macOS에서 동작합니다.
             </p>
-          </Card>
+          </ProjectCard>
         </Col>
         <Col xs={24} xl={12}>
-          <Card
+          <ProjectCard
             title="iHEIC"
             extra={<a onClick={() => setProjectModal(changeModal(6))}>읽기</a>}
-            style={{ width: "100%" }}
           >
             <p>
               HEIC 이미지 파일을 쉽고 간편하게 JPG로 변환해주는 프로그램 입니다.
               <br />
               Windows, Linux, macOS에서 동작합니다.
             </p>
-          </Card>
+          </ProjectCard>
         </Col>
         <Col xs={24} xl={12}>
-          <Card
+          <ProjectCard
             title="결정맨"
             extra={<a onClick={() => setProjectModal(changeModal(3))}>읽기</a>}
-            style={{ width: "100%" }}
           >
             <p>
               가끔 결정하기 힘든일이 있을때 사용하기 위해 만든 웹 서비스 입니다.
               <br />
               &nbsp;
             </p>
-          </Card>
+          </ProjectCard>
         </Col>
         <Col xs={24} xl={12}>
-          <Card
+          <ProjectCard
             title="영상 컨텐츠를 기반으로 PPL 정보를 제공하는 소셜TV 에코 시스템"
             extra={<a onClick={() => setProjectModal(changeModal(0))}>읽기</a>}
-            style={{ width: "100%" }}
           >
             <p>
               플레이어에서의 스틸컷 핑거프린팅값을 재생시각보다 우선시하여 PPL
@@ -106,33 +113,31 @@ const Projects = () => {
               영상을 시청하고 있을 때 세컨드스크린앱에서 PPL 상품에 접근시키는
               기술입니다.
             </p>
-          </Card>
+          </ProjectCard>
         </Col>
         <Col xs={24} xl={12}>
-          <Card
+          <ProjectCard
             title="AirDisk"
             extra={<a onClick={() => setProjectModal(changeModal(1))}>읽기</a>}
-            style={{ width: "100%" }}
           >
             <p>
               사용자의 스마트폰을 웹서버로 사용할 수 있게 해주는 안드로이드
               애플리케이션입니다. 이 애플리케이션을 사용하여 같은 와이파이에
               접속된 사람들과 영상, 사진 등등을 자유롭게 공유할 수 있습니다.
             </p>
-          </Card>
+          </ProjectCard>
         </Col>
         <Col xs={24} xl={12}>
-          <Card
+          <ProjectCard
             title="Morphing"
             extra={<a onClick={() => setProjectModal(changeModal(2))}>읽기</a>}
-            style={{ width: "100%" }}
           >
             <p>
               정서 판단 속도 테스트를 위해 만들어진 Android Application 입니다.
               <br />
               사용처 : 한양대학교 HCI 연구실
             </p>
-          </Card>
+          </ProjectCard>
         </Col>
       </Row>
       <Modal
@@ -140,7 +145,7 @@ const Projects = () => {
           <b>영상 컨텐츠를 기반으로 PPL 정보를 제공하는 소셜TV 에코 시스템</b>
         }
         visible={projectModal[0]}
-        width="90%"
+        width="fit-content"
         style={{ top: "2%" }}
         okText="닫기"
         onOk={() => setProjectModal(initModal())}
@@ -154,12 +159,13 @@ const Projects = () => {
           해당 영상을 시청하고 있을 때 세컨드스크린앱에서 PPL 상품에 접근시키는
           기술입니다.
         </p>
-        <img style={{ width: "100%", marginTop: 12 }} src={Project1} />
+        <br />
+        <img style={{ maxWidth: "100%", marginTop: 12 }} src={Project1} />
       </Modal>
       <Modal
         title={<b>AirDisk</b>}
         visible={projectModal[1]}
-        width="90%"
+        width="fit-content"
         style={{ top: "2%" }}
         okText="닫기"
         onOk={() => setProjectModal(initModal())}
@@ -170,12 +176,13 @@ const Projects = () => {
         애플리케이션입니다.
         <br />이 애플리케이션을 사용하여 같은 와이파이에 접속된 사람들과 영상,
         사진 등등을 자유롭게 공유할 수 있습니다.
-        <img style={{ width: "100%", marginTop: 12 }} src={Project2} />
+        <br />
+        <img style={{ maxWidth: "100%", marginTop: 12 }} src={Project2} />
       </Modal>
       <Modal
         title={<b>Morphing</b>}
         visible={projectModal[2]}
-        width="90%"
+        width="fit-content"
         style={{ top: "2%" }}
         okText="닫기"
         onOk={() => setProjectModal(initModal())}
@@ -183,12 +190,13 @@ const Projects = () => {
         cancelButtonProps={{ style: { display: "none" } }}
       >
         <p>정서 판단 속도 테스트를 위해 만들어진 Android Application 입니다.</p>
-        <img style={{ width: "100%", marginTop: 12 }} src={Project3} />
+        <br />
+        <img style={{ maxWidth: "100%", marginTop: 12 }} src={Project3} />
       </Modal>
       <Modal
         title={<b>결정맨</b>}
         visible={projectModal[3]}
-        width="90%"
+        width="fit-content"
         style={{ top: "2%" }}
         okText="닫기"
         onOk={() => setProjectModal(initModal())}
@@ -202,12 +210,13 @@ const Projects = () => {
         <a href="https://kyuhyuk.kr/decision-man">
           https://kyuhyuk.kr/decision-man
         </a>
-        <img style={{ width: "100%", marginTop: 12 }} src={Project4} />
+        <br />
+        <img style={{ maxWidth: "100%", marginTop: 12 }} src={Project4} />
       </Modal>
       <Modal
         title={<b>PiCLFS</b>}
         visible={projectModal[4]}
-        width="90%"
+        width="fit-content"
         style={{ top: "2%" }}
         okText="닫기"
         onOk={() => setProjectModal(initModal())}
@@ -224,12 +233,13 @@ const Projects = () => {
         <a href="https://github.com/LeeKyuHyuk/PiCLFS">
           https://github.com/LeeKyuHyuk/PiCLFS
         </a>
-        <img style={{ width: "100%", marginTop: 12 }} src={Project5} />
+        <br />
+        <img style={{ maxWidth: "100%", marginTop: 12 }} src={Project5} />
       </Modal>
       <Modal
         title={<b>Android Debloater</b>}
         visible={projectModal[5]}
-        width="90%"
+        width="fit-content"
         style={{ top: "2%" }}
         okText="닫기"
         onOk={() => setProjectModal(initModal())}
@@ -246,12 +256,13 @@ const Projects = () => {
         <a href="https://github.com/LeeKyuHyuk/Android-Debloater">
           https://github.com/LeeKyuHyuk/Android-Debloater
         </a>
-        <img style={{ width: "100%", marginTop: 12 }} src={Project6} />
+        <br />
+        <img style={{ maxWidth: "100%", marginTop: 12 }} src={Project6} />
       </Modal>
       <Modal
         title={<b>iHEIC</b>}
         visible={projectModal[6]}
-        width="90%"
+        width="fit-content"
         style={{ top: "2%" }}
         okText="닫기"
         onOk={() => setProjectModal(initModal())}
@@ -267,7 +278,8 @@ const Projects = () => {
         <a href="https://github.com/LeeKyuHyuk/iHEIC">
           https://github.com/LeeKyuHyuk/iHEIC
         </a>
-        <img style={{ width: "100%", marginTop: 12 }} src={Project7} />
+        <br />
+        <img style={{ maxWidth: "100%", marginTop: 12 }} src={Project7} />
       </Modal>
     </Wrapper>
   );
